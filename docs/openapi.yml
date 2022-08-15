@@ -8,7 +8,7 @@ servers:
   - url: "https://api.guppy.com/"
 tags:
   - name: "products"
-    description: "Device assignation operations"
+    description: "Producs operations"
 paths:
   /v1/products:
     post:
