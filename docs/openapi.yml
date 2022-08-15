@@ -1,0 +1,62 @@
+openapi: 3.0.1
+info:
+  title: "guppy-backend"
+  description: "Backend for the Guppy Mobile Application"
+  version: v0.1.0
+servers:
+  - url: "https://api-staging.guppy.com/"
+  - url: "https://api.guppy.com/"
+tags:
+  - name: "products"
+    description: "Device assignation operations"
+paths:
+  /v1/products:
+    post:
+      summary: "Get a list of products"
+      operationId: "getProducts"
+      tags:
+        - "products"
+      parameters:
+        - name: "businessId"
+          in: "query"
+          description: "Business ID to filter upon"
+          required: true
+          schema:
+            type: "string"
+            example: "9f6b404b-e1c0-4b54-a1c6-1ab3111b6d13"
+      responses:
+        200:
+          description: "Query executed succesfully"
+        400:
+          description: "Incorrect Query Parameter."
+
+components:
+  schemas:
+    Product:
+      type: "object"
+      description: "Product model schema."
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+          example: "0c199f6d-696b-4647-b237-8b0bf6ca38cd"
+        name:
+          type: "string"
+          example: "Pizza"
+        price:
+          type: "number"
+          example: 125.05
+        businessId:
+          type: "string"
+          format: "uuid"
+          example: "e9a14e6e-2930-4520-b4d0-cb62e5adedb6"
+        imageURL:
+          type: "string"
+          format: "url"
+          example: "https://img.icons8.com/plasticine/2x/pizza.png"
+        createdAt:
+          type: "string"
+          example: "2020-06-01T20:04:00.600+00:00"
+        updatedAt:
+          type: "string"
+          example: "2020-06-01T20:04:00.600+00:00"
